@@ -18,37 +18,25 @@
       <div class="container">
          <h2>Moedas disponiveis para conversao</h2>
          <p>Conversao baseada nos valores do dia 10/07/22</p>
-         <div class="coins_container">
-            <label for="dolar">Dolar</label>
-            <input type="number" id="dolar">
+
+         <select name="coins" id="coins">
+            <option value="dolar" selected>Dolar</option>
+            <option value="euro">Euro</option>
+            <option value="libra">Libras</option>
+            <option value="bitcoin">BitCoins</option>
+         </select>
+
+         <form class="coins_container">
+            <label for="userI">BRL</label>
+            <input type="number" id="userI">
             <button id="btnConverter">Converter</button>
-         </div>
+         </form>
          <div class="result">
             <p class="p_result"></p>
          </div>
       </div>
    </main>
-
-   <script>
-      // Elements HTML
-      let btnConverter = document.querySelector('#btnConverter');
-      let dolarInput = document.querySelector("#dolar");
-      let resultado = document.querySelector('.p_result');
-
-      btnConverter.addEventListener('click', (e) => {
-
-         let valorEmReal = parseFloat(dolarInput.value * 5.26).toFixed(2)
-
-         if (valorEmReal <= 0) {
-            resultado.innerText = 'Conversao invalida'
-         } else {
-            resultado.innerText = `Valor em Reais ${valorEmReal}`
-         }
-
-      })
-
-
-   </script>
+   <script src="script.js"></script>
 </body>
 
 </html>
