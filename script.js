@@ -16,7 +16,10 @@ btnConverter.addEventListener('click', (e) => {
    let valorEmReal;
    let valueSelected = listCoins.options[listCoins.selectedIndex].value;
 
-   if(valueSelected === 'dolar') {
+   if(userInput.value == 0) {
+      resultado.innerText = 'Preencha com algum valor valido'
+   }
+   else if(valueSelected === 'dolar') {
       valorEmReal = convertFunction(userInput.value, 5.32)
       resultado.innerText = `O valor convertido e ${valorEmReal} dolares`;
    } 
@@ -29,7 +32,7 @@ btnConverter.addEventListener('click', (e) => {
       resultado.innerText = `O valor convertido e ${valorEmReal} libras`;
    }
    else if (valueSelected === 'bitcoin') {
-      valorEmReal = convertFunction(userInput.value, 109.230,01)
-      resultado.innerText = `O valor convertido e ${valorEmReal} bitcoins`
+      valorEmReal = convertFunction(userInput.value, 109.230,00)
+      resultado.innerText = `O valor convertido e ${valorEmReal},00 bitcoins`
    }
 });
