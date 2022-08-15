@@ -6,3 +6,4 @@
    - Selecione uma moeda.
    - No campo de texto, coloque um valor maior que 0 e em seguida clique no botao 'Converter'.
    - O valor da conversao sera exibido logo abaixo.
+
