@@ -15,7 +15,7 @@ header {
    padding-top: 1rem;
    padding-bottom: 1rem;
 
-   background: #202020;
+   background: #236e53;
    color: #f0f8ff;
 }
 
@@ -32,34 +32,51 @@ main {
    align-items: center;
    margin: 2rem auto;
    
-   border:2px solid rgb(0, 140, 255);
-   border-radius: 3px;
+   border-radius: 0.2rem 0.2rem 2rem 2rem;
+   border: 1px solid #3DB388;
 
    max-width: 320px;
 }
 
 .container > h2{ 
-   padding: 0.7rem;
+   padding: 0.5rem;
    width: 100%;
-   background-color: #202020;
+   background-color: #236e53;
    color: #f0f8ff;
    text-align: center;
-   margin-bottom:1rem;
+   margin-bottom:0.5rem;
 }
 .container > p {
    text-decoration: underline 1px solid black;
-
+   text-align: center;
+   font-size: 14px;
    padding: 1rem;
 }
 
+.select {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   margin-bottom: 2rem;
+}
 .coins_container {
-   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+.coins_container > button {
+   border: none;
+   padding: 0.3rem;
+   border-radius: 2rem;
+   background-color: #236e53;
+   font-weight: 600;
+   cursor: pointer;
+   transition: .1s;
+
+}
+.coins_container > button:hover  {
+   transition: .2s;
+   background-color: #3DB388;
 }
 
 .p_result {
-   margin: 1rem;
-}
-
-.select {
-   padding-top: 1rem;
+   margin-bottom: 1rem;
 }
