@@ -6,7 +6,7 @@ let btnConverter = $('#btnConverter');
 let userInput = $("#userI");
 let resultado = $('.p_result');
 let updateCoinData = $("#updateCoin");
-
+let coinDayValue = $(".coin-value")
 const listCoins = $('#coins');
 
 // GET UPDATE COIN DATA
@@ -19,47 +19,46 @@ async function UPDATE_DATA_COIN() {
    const coinDataSelected = resp_data.USDBRL;
    updateCoinData.innerHTML = `<p>Dados atualizados: ${coinDataSelected.create_date}</p>`;
 }
+UPDATE_DATA_COIN();
 
-// ! BUG ABAIXO
-const convertFunction = (entry, value) => {
-   return parseFloat(entry * value).toFixed(2);
+function converterValor(a, b) {
+   return (a * b).toFixed(2);
 }
 
-btnConverter.addEventListener('click', async (e, coin) => {
+function converterBtc(a, b) {
+   return (a * b).toFixed(3);
+}
+
+btnConverter.addEventListener('click', async (e) => {
    e.preventDefault();
+
+   let valueSelected = listCoins.options[listCoins.selectedIndex].value;
+   console.log(`Moeda selecionada ${valueSelected}`);
 
    // Fetching coin data
    const resp = await fetch(API_URL);
    const resp_data = await resp.json();
-
+   // Return data fetching
    const dolarSelect = resp_data.USDBRL;
    const euroSelect = resp_data.EURBRL;
    const bitcSelect = resp_data.BTCBRL;
 
    // OPTIONS AVAILABLE
-   const dolarValue = Number(parseFloat(dolarSelect.bid).toFixed(2));
-   const euroValue = Number(parseFloat(euroSelect.bid).toFixed(2));
-   const bitValue = Number(parseFloat(bitcSelect.bid).toFixed(3));
-
-   e.preventDefault()
-   let valueSelected = listCoins.options[listCoins.selectedIndex].value;
-   console.log(`Moeda selecionada ${valueSelected}`);
+   const dolarValue = Number(parseFloat(dolarSelect.bid));
+   const euroValue = Number(parseFloat(euroSelect.bid));
+   const bitValue = Number(parseFloat(bitcSelect.bid));
 
    if(userInput.value <= 0) {
-      console.log('Valor invalido')
-      resultado.innerText = "Insira um valor valido para converter"
-   }
-   else if(valueSelected === 'dolar'){
-      console.log(`O dolar hoje esta com um valor de ${dolarValue}`)
-      resultado.innerText = `A conversao e ${(userInput.value * dolarValue)}`
-   } else if(valueSelected === 'euro'){
-      console.log(`O euro hoje esta com o valor igual a ${euroValue}`)
-      resultado.innerText = `A conversao e ${(userInput.value * euroValue)}`
+      resultado.innerText = 'O valor digitado não pode ser 0'
+   } else if(valueSelected === 'dolar') {
+      resultado.innerText = `R$${userInput.value} equivale a US$${converterValor(userInput.value, dolarValue)}`
+   } else if(valueSelected === 'euro') {
+      resultado.innerText = `R$${userInput.value} equivale a £${converterValor(userInput.value, euroValue)}`
    } else {
-      console.log(`O bitcoin hoje esta com o valor igual a ${bitValue}`)
-      resultado.innerText = `A conversao e ${(userInput.value * bitValue)}`
+      resultado.innerText = `R$${userInput.value} equivale a ₿${converterBtc(userInput.value, bitValue)}`
    }
 
 });
 
-UPDATE_DATA_COIN();
+
+
