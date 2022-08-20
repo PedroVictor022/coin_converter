@@ -14,7 +14,6 @@ async function UPDATE_DATA_COIN() {
    // Fetching coin data
    const resp = await fetch(API_URL);
    const resp_data = await resp.json();
-   console.log(resp_data);
    // RETURN COIN DATA
    const coinDataSelected = resp_data.USDBRL;
    updateCoinData.innerHTML = `<p>Dados atualizados: ${coinDataSelected.create_date}</p>`;
@@ -33,7 +32,6 @@ btnConverter.addEventListener('click', async (e) => {
    e.preventDefault();
 
    let valueSelected = listCoins.options[listCoins.selectedIndex].value;
-   console.log(`Moeda selecionada ${valueSelected}`);
 
    // Fetching coin data
    const resp = await fetch(API_URL);
